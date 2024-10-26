@@ -1,29 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-import { NameProduct } from './Name';
-import { description_product } from './description';
-import { prix_product } from './Price';
-import { image_product } from './image';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import product from './product';
+import Product from './data/product';
+import ImageProduct from './components/image';
+import NameProduct from './components/Name';
+import DescriptionProduct from './components/description';
+import PriceProduit from './components/Price';
+import userlist from './data/userdata';
+import User from './components/user/user';
+import Etat from './components/etat';
 function App() {
+  const {name}=userlist
   return (
-    <div className="App">
+    <div>
     <Card className='card'>
-      <Card.Img src= {product.image } />
-      <Card.Body>
-        <Card.Title><h1> {product.name}</h1></Card.Title>
-        <Card.Title><h1>goute {product.prix}</h1></Card.Title>
-        <Card.Title><h1>A base d' {product.description}</h1></Card.Title>
-        <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.      
-      </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
+      <ImageProduct image={Product.image} className="image"/>
+      <NameProduct name={Product.name} />
+      <DescriptionProduct description={Product.description} />
+      <PriceProduit prix={Product.prix}/>
     </Card>
-
+    
+    <h1>BONJOUR {name !="" ? <Etat/>:null}</h1>
     </div>
   );
 }
